@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - مكتبة جرير</title>
+    <link rel="stylesheet" href="./stylesheet/style.css">
+    <link rel="icon" href="logoPage.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        /* ===================== Facebook-style Login ===================== */
+        .fb-page {
+            background-color: #f0f2f5;
+            background-image: radial-gradient(circle at center, rgba(227, 31, 31, 0.05), transparent 60%);
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 20px;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Faint centered logo watermark, sits behind the card */
+        .fb-page::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url('./images/jarir-logo-bg.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: min(520px, 65vw);
+            opacity: 0.16;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .fb-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 70px;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Brand / hero side, mimics Facebook's big wordmark + tagline */
+        .fb-brand {
+            flex: 1 1 320px;
+            max-width: 480px;
+            text-align: center;
+        }
+
+        .fb-brand h1 {
+            color: #e31f1f;
+            font-size: 46px;
+            font-weight: 800;
+            margin: 0 0 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .fb-brand p {
+            font-size: 20px;
+            line-height: 1.5;
+            color: #1c1e21;
+            margin: 0;
+        }
+
+        /* The white card, exactly like Facebook's login box */
+        .fb-card {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            width: 396px;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .fb-card form {
+            margin: 0;
+        }
+
+        .fb-card input[type="text"],
+        .fb-card input[type="password"] {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            border: 1px solid #ccd0d5;
+            border-radius: 6px;
+            font-size: 17px;
+            outline: none;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .fb-card input[type="text"]:focus,
+        .fb-card input[type="password"]:focus {
+            border-color: #e31f1f;
+            box-shadow: 0 0 0 3px rgba(227, 31, 31, 0.15);
+        }
+
+        .fb-login-btn {
+            width: 100%;
+            padding: 13px;
+            background-color: #e31f1f;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 4px;
+            margin-bottom: 16px;
+            transition: 0.15s;
+        }
+
+        .fb-login-btn:hover {
+            background-color: #b51717;
+        }
+
+        .fb-forgot {
+            display: block;
+            text-align: center;
+            color: #e31f1f;
+            font-size: 14px;
+            text-decoration: none;
+            margin-bottom: 18px;
+        }
+
+        .fb-forgot:hover {
+            text-decoration: underline;
+        }
+
+        .fb-divider {
+            border: none;
+            border-top: 1px solid #dadde1;
+            margin: 4px 0 20px;
+        }
+
+        .fb-create-btn-wrap {
+            text-align: center;
+        }
+
+        .fb-create-btn {
+            display: inline-block;
+            padding: 12px 18px;
+            background-color: #42b72a;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .fb-create-btn:hover {
+            background-color: #36a420;
+        }
+
+        .fb-page-cta {
+            text-align: center;
+            margin-top: 28px;
+            font-size: 13px;
+            color: #1c1e21;
+        }
+
+        .fb-page-cta a {
+            color: #1c1e21;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .fb-page-cta a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 700px) {
+            .fb-brand h1 { font-size: 36px; }
+            .fb-brand p { font-size: 17px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="simple-header">
+        <div class="simple-header-container">
+            <a href="index.html" class="logo-section">
+                <img src="./images/logoNavbar.png" alt="جرير" width="135" height="45">
+            </a>
+
+            <nav class="jarir-nav-auth">
+                <ul id="links" class="auth-links">
+                    <li><a href="login.html" class="auth-btn">تسجيل الدخول</a></li>
+                    <li><a href="register.html" class="auth-btn signup">إنشاء حساب</a></li>
+                </ul>
+
+                <ul id="user_info" class="user-info-list" style="display: none;">
+                    <li><span class="welcome-msg">مرحباً، <strong id="user"></strong></span></li>
+
+                    <li class="nav-icon-item">
+                        <a href="favorites.html" class="nav-icon-link">
+                            <i class="far fa-heart"></i>
+                            <span class="badge" id="fav-badge">0</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-icon-item shopping_cart">
+                        <a href="cartproducts.html" class="nav-icon-link" id="cartIconLink">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge" id="cart-badge">0</span>
+                        </a>
+                        <div class="mini-cart-dropdown" id="miniCartDropdown">
+                            <div class="mini-cart-items" id="miniCartItems"></div>
+                            <a href="cartproducts.html" class="mini-cart-viewall">مشاهدة كل العناصر</a>
+                        </div>
+                    </li>
+
+                    <li><a href="#" id="logout" class="logout-btn">خروج</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="fb-page">
+        <div class="fb-wrapper">
+            <div class="fb-brand">
+                <h1>مكتبة جرير</h1>
+                <p>سجّل الدخول لمتابعة طلباتك، عربة التسوق، وقائمة المفضلة الخاصة بك في أي وقت ومن أي مكان.</p>
+            </div>
+
+            <div class="fb-card">
+                <form id="login-form">
+                    <input type="text" placeholder="اسم المستخدم أو البريد الإلكتروني" id="username" required>
+                    <input type="password" placeholder="كلمة المرور" id="password" required>
+                    <input type="submit" value="تسجيل الدخول" class="fb-login-btn" id="sign_in">
+                </form>
+
+                <!-- Static/decorative only, no functionality behind it -->
+                <a href="#" class="fb-forgot">هل نسيت كلمة المرور؟</a>
+
+                <hr class="fb-divider">
+
+                <div class="fb-create-btn-wrap">
+                    <a href="register.html" class="fb-create-btn">إنشاء حساب جديد</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Static/decorative only, no functionality behind it -->
+    <p class="fb-page-cta">
+        <a href="#">إنشاء صفحة</a> لعلامة تجارية، عمل مشهور، أو نشاط تجاري.
+    </p>
+
+    <script src="./js/Login.js"></script>
+    <script src="./js/Sctipt.js"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="عربة التسوق الخاصة بك في مكتبة جرير: راجع منتجاتك، عدّل الكميات، وأكمل الشراء.">
+    <link rel="icon" href="logoPage.png" type="image/png">
+    <title>سلة التسوق - مكتبة جرير</title>
+    <link rel="stylesheet" href="./stylesheet/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .cart-page { padding: 40px 5vw; background-color: #e8e8e8b9; min-height: 80vh; }
+        .cart-container { display: flex; gap: 20px; flex-wrap: wrap; }
+        .cart-items { flex: 3; background: white; padding: 20px; border-radius: 8px; }
+        .cart-summary { flex: 1; background: white; padding: 20px; border-radius: 8px; height: fit-content; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding: 15px 0; gap: 10px; flex-wrap: wrap; }
+        .cart-item img { width: 80px; height: 80px; object-fit: contain; }
+        .cart-item-details { flex: 2; margin-right: 20px; min-width: 150px; }
+        .cart-item-details h4 { font-size: 18px; margin-bottom: 5px; color: #333; }
+        .cart-item-price { color: #e31f1f; font-weight: bold; font-size: 18px; }
+        .cart-item-qty { display: flex; align-items: center; gap: 8px; }
+        .cart-item-qty button { width: 28px; height: 28px; border: 1px solid #ddd; background: #f5f5f5; cursor: pointer; font-size: 16px; border-radius: 4px; }
+        .cart-item-qty button:hover { background: #e31f1f; color: #fff; border-color: #e31f1f; }
+        .cart-item-subtotal { font-weight: bold; color: #333; min-width: 90px; text-align: center; }
+        .remove-btn { background: none; border: none; color: #999; cursor: pointer; font-size: 18px; transition: 0.2s; }
+        .remove-btn:hover { color: #e31f1f; }
+        .checkout-btn { width: 100%; padding: 12px; background-color: #e31f1f; color: white; border: none; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 15px; }
+        .checkout-btn:hover { background-color: #b51717; }
+
+        /* Cross-sell (favorited items) section */
+        .crossell-section { margin-top: 40px; }
+        .crossell-divider { border: none; border-top: 2px solid #ddd; margin: 30px 0; }
+        .crossell-section h2 { margin-bottom: 15px; color: #333; }
+        .crossell-grid { display: flex; flex-wrap: wrap; gap: 20px; }
+    </style>
+</head>
+<body>
+    <!-- Simplified, SEO-friendly header: logo + session status + simple nav only (no sliders/banners) -->
+    <header class="simple-header">
+        <div class="simple-header-container">
+            <a href="index.html" class="logo-section">
+                <img src="./images/logoNavbar.png" alt="جرير" width="135" height="45">
+            </a>
+
+            <nav class="jarir-nav-auth">
+                <ul id="links" class="auth-links">
+                    <li><a href="login.html" class="auth-btn">تسجيل الدخول</a></li>
+                    <li><a href="register.html" class="auth-btn signup">إنشاء حساب</a></li>
+                </ul>
+
+                <ul id="user_info" class="user-info-list" style="display: none;">
+                    <li><span class="welcome-msg">مرحباً، <strong id="user"></strong></span></li>
+
+                    <li class="nav-icon-item">
+                        <a href="favorites.html" class="nav-icon-link">
+                            <i class="far fa-heart"></i>
+                            <span class="badge" id="fav-badge">0</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-icon-item shopping_cart">
+                        <a href="cartproducts.html" class="nav-icon-link" id="cartIconLink">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge" id="cart-badge">0</span>
+                        </a>
+                        <div class="mini-cart-dropdown" id="miniCartDropdown">
+                            <div class="mini-cart-items" id="miniCartItems"></div>
+                            <a href="cartproducts.html" class="mini-cart-viewall">مشاهدة كل العناصر</a>
+                        </div>
+                    </li>
+
+                    <li><a href="#" id="logout" class="logout-btn">خروج</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="cart-page">
+        <section aria-labelledby="cart-heading">
+            <h1 id="cart-heading">عربة التسوق</h1>
+            <div class="cart-container">
+                <article class="cart-items" id="cart-items-wrapper"></article>
+                <aside class="cart-summary">
+                    <h2>ملخص الطلب</h2>
+                    <hr>
+                    <div style="display: flex; justify-content: space-between; margin: 15px 0; font-size: 18px;">
+                        <span>الإجمالي:</span>
+                        <span id="total-price" style="color: #e31f1f; font-weight: bold;">0 ر.س</span>
+                    </div>
+                    <button class="checkout-btn">الذهاب للدفع</button>
+                </aside>
+            </div>
+        </section>
+
+        <hr class="crossell-divider">
+
+        <section class="crossell-section" aria-labelledby="crossell-heading">
+            <h2 id="crossell-heading">منتجاتك المفضلة</h2>
+            <div class="crossell-grid" id="crossell-wrapper"></div>
+        </section>
+    </main>
+
+    <script src="./JS/sctipt.js"></script>
+    <script>
+        // This page renders the cart table itself; sctipt.js provides the
+        // shared helpers (getCart/saveCart/changeCartQty/removeFromCartByName/
+        // cartTotalPrice/getFavorites/addOrIncrementCart/updateBadges/renderMiniCart).
+
+        let wrapper = document.getElementById("cart-items-wrapper");
+        let totalSpan = document.getElementById("total-price");
+        let crossellWrapper = document.getElementById("crossell-wrapper");
+
+        function drawCart() {
+            let cartItems = getCart();
+
+            if (cartItems.length === 0) {
+                wrapper.innerHTML = "<p style='text-align:center; padding: 20px;'>العربة فارغة حالياً.</p>";
+                totalSpan.textContent = "0 ر.س";
+                return;
+            }
+
+            wrapper.innerHTML = cartItems.map((item) => {
+                let priceNum = priceToNumber(item.price);
+                let qty = item.quantity || 1;
+                let subtotal = priceNum * qty;
+                return `
+                    <div class="cart-item" data-name="${item.name}">
+                        <img src="${item.img}" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p style="color:#666; font-size:14px;">${item.desc}</p>
+                            <span class="cart-item-price">${item.price}</span>
+                        </div>
+                        <div class="cart-item-qty">
+                            <button class="qty-decrease" data-name="${item.name}">-</button>
+                            <span>${qty}</span>
+                            <button class="qty-increase" data-name="${item.name}">+</button>
+                        </div>
+                        <span class="cart-item-subtotal">${subtotal} ر.س</span>
+                        <button class="remove-btn" data-name="${item.name}" title="حذف"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                `;
+            }).join('');
+
+            totalSpan.textContent = cartTotalPrice() + " ر.س";
+        }
+
+        function drawCrossSell() {
+            let favItems = getFavorites();
+
+            if (favItems.length === 0) {
+                crossellWrapper.innerHTML = "<p>لا توجد منتجات في المفضلة بعد.</p>";
+                return;
+            }
+
+            crossellWrapper.innerHTML = favItems.map((item) => `
+                <div class="product-card">
+                    <div class="product-img"><img src="${item.img}" alt="${item.name}"></div>
+                    <div class="product-info">
+                        <h4 class="product-name">${item.name}</h4>
+                        <p class="product-desc">${item.desc}</p>
+                        <span class="product-price">${item.price}</span>
+                        <div class="product-actions">
+                            <i class="fas fa-cart-shopping add-from-fav" data-name="${item.name}" title="أضف للسلة"></i>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        wrapper.addEventListener("click", function (e) {
+            const increaseBtn = e.target.closest(".qty-increase");
+            const decreaseBtn = e.target.closest(".qty-decrease");
+            const removeBtn = e.target.closest(".remove-btn");
+
+            if (increaseBtn) {
+                changeCartQty(increaseBtn.dataset.name, 1);
+            }
+            if (decreaseBtn) {
+                changeCartQty(decreaseBtn.dataset.name, -1);
+            }
+            if (removeBtn) {
+                removeFromCartByName(removeBtn.dataset.name);
+            }
+
+            if (increaseBtn || decreaseBtn || removeBtn) {
+                drawCart();
+                updateBadges();
+            }
+        });
+
+        crossellWrapper.addEventListener("click", function (e) {
+            const addBtn = e.target.closest(".add-from-fav");
+            if (!addBtn) return;
+
+            let favItems = getFavorites();
+            let favProduct = favItems.find((f) => f.name === addBtn.dataset.name);
+            if (!favProduct) return;
+
+            addOrIncrementCart({ img: favProduct.img, name: favProduct.name, desc: favProduct.desc, price: favProduct.price });
+            drawCart();
+            updateBadges();
+            alert(`تمت إضافة "${favProduct.name}" إلى عربة التسوق!`);
+        });
+
+        drawCart();
+        drawCrossSell();
+    </script>
+</body>
+</html>

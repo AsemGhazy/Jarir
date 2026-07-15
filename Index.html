@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>مكتبة جرير، ليست مجرد مكتبة |السعوديه</title>
+        <link rel="icon" href="logoPage.png" type="image/png">
+        <link rel="stylesheet" href="./stylesheet/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    </head>
+    <body>
+        <div class="header-container">        
+
+            <div class="lang-selector">
+                <span>English</span>
+                <span>مصر</span>
+                <span >▼</span>
+            </div>
+
+            <div class="country-selector">
+                <span>معرف</span>
+                <span >▼</span>
+            </div>
+
+            <a href="#" class="help-link">المساعدة</a>
+
+            <div class="services-section">
+                <div class="services-item">
+                    <span>خدمات حبر</span>
+                    <span >▼</span>
+                </div>
+                    
+                <div class="services-item">
+                    <span>طلبات الوظائف</span>
+                </div>
+            </div>
+
+            <nav class="jarir-nav-auth">
+                <ul id="links" class="auth-links">
+                    <li><a href="login.html" class="auth-btn">تسجيل الدخول</a></li>
+                    <li><a href="register.html" class="auth-btn signup">إنشاء حساب</a></li>
+                </ul>
+                
+                <ul id="user_info" class="user-info-list" style="display: none;">
+                    <li><span class="welcome-msg">مرحباً، <strong id="user"></strong></span></li>
+                    
+                    <li class="nav-icon-item">
+                        <a href="favorites.html" class="nav-icon-link">
+                            <i class="far fa-heart"></i>
+                            <span class="badge" id="fav-badge">0</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-icon-item shopping_cart">
+                        <a href="cartproducts.html" class="nav-icon-link" id="cartIconLink">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge" id="cart-badge">0</span>
+                        </a>
+                        <div class="mini-cart-dropdown" id="miniCartDropdown">
+                            <div class="mini-cart-items" id="miniCartItems"></div>
+                            <a href="cartproducts.html" class="mini-cart-viewall">مشاهدة كل العناصر</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="#" id="logout" class="logout-btn">خروج</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- --------------------------------------------------------------------------------- -->
+
+        <div class="header1-container">
+
+            <button class="burger-menu" id="burgerMenuBtn">☰</button>
+
+            <div class="logo-section">
+                <a href="/index.html">
+                    <img src="images/logoNavbar.png" alt="logoNavbar" width="135" height="45">
+                </a>
+            </div>
+
+            <a href="#" class="brands-link">العلامات التجارية</a>
+            <a href="#" class="categories-link">تصفح الأقسام</a>
+                
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="البحث...">
+                <button class="search-button">🔍</button>
+            </div>
+
+            <div class="delivery-info">
+                <span>📍</span>
+                <span>توصيل إلى ...</span>
+            </div>
+        </div>
+
+        <!-- --------------side bar----------------------- -->
+
+        <aside class="sidebar" id="sidebarMenu">
+            <button class="close-sidebar" id="closeSidebarBtn">×</button>
+            <h3>جميع الأقسام</h3>
+
+            <ul>
+                <li><a href="#">الكتب العربية</a></li>
+                <li><a href="#">الكتب الإنجليزية</a></li>
+                <li><a href="#">الهواتف الذكية</a></li>
+                <li><a href="#">الكمبيوتر</a></li>
+                <li><a href="#">الألعاب الإلكترونية</a></li>
+                <li><a href="#">الأدوات المكتبية</a></li>
+                <li><a href="#">العروض</a></li>
+            </ul>
+        </aside>
+        <!--------------------------------------------------------> 
+    
+        <section class="hero-slider">
+
+            <div class="slider">
+
+                <div class="slide">
+                    <img src="./images/1.png" alt="Offer 1">
+                </div>
+
+                <div class="slide">
+                    <img src="./images/2.png" alt="Offer 2">
+                </div>
+
+                <div class="slide">
+                    <img src="./images/3.png" alt="Offer 3">
+                </div>
+
+                <div class="slide">
+                    <img src="./images/4.png" alt="Offer 4">
+                </div>
+
+                <div class="slide">
+                    <img src="./images/5.png" alt="Offer 5">
+                </div>
+
+                <div class="slide">
+                    <img src="./images/6.png" alt="Offer 6">
+                </div>
+
+                <div class="slide">
+                    <img src="./images/7.png" alt="Offer 7">
+                </div>
+
+                <div class="slide">
+                    <img src="./images/8.png" alt="Offer 8">
+                </div>
+
+                <div class="slide">
+                    <img src="./images/9.png" alt="Offer 9">
+                </div>
+
+            </div>
+
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+
+            <div class="dots"></div>
+
+        </section>
+
+        <!-- ---------------------------------------------------- -->
+
+        <section class="products-section">
+            <div class="row-container">
+                <h2 class="row-title">وصل حديثًا</h2>
+                <div class="slider-wrapper">
+                    <button class="prod-prev">&#10094;</button>
+                    <div class="products-row">
+                        <div class="product-card">
+                            <div class="product-img"><img src="./images/a73046a7547de7e971025bf79ead7b61a8dc6d25_678015.jpg" alt="منتج"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">لينوفو ايديا تاب تابلت 2026</h4>
+                                <p class="product-desc">سعة 256 جيجابايت، تيتانيوم طبيعي، 5G</p>
+                                <span class="product-price">999 ر.س</span>
+                                <div class="product-actions">
+                                    <i class="fa-regular fa-heart"></i>
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img"><img src="./images/b92b93a6b3600033f96d52d0114cdf81d99a293d_682226.jpg" alt="منتج"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">لوجيتيك جي جي512 اكس 98</h4>
+                                <p class="product-desc">الجيل الثاني مع علبة شحن لاسلكي</p>
+                                <span class="product-price">919 ر.س</span>
+                                <div class="product-actions">
+                                    <i class="fa-regular fa-heart"></i>
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card"><div class="product-img"><img src="./images/e2b661d20b92ec34466538cf20bf83968bc0a193_683731.jpg"></div><div class="product-info"><h4 class="product-name">383 -‎‎ اتش 173 سي بي اي راوتر</h4><p class="product-desc">كور آي 7، رام 16 جيجا</p><span class="product-price">699 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/8ef0f07b98c22ab721e9f934eeb251036e1b63a1_679428.jpg"></div><div class="product-info"><h4 class="product-name">موتورولا ريزر فولد</h4><p class="product-desc">موتورولا ريزر فولد</p><span class="product-price">5999 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/05702a30ab428e9f4f42a269a151d0a7c488c185_685249.jpg"></div><div class="product-info"><h4 class="product-name">نينتيندو يد تحكم Joy‎-‎Con ‎2</h4><p class="product-desc">هيكل ألومنيوم مقاس 45 مم</p><span class="product-price">2699 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/1084773285323cdcd94ad989074b8751917e619d_683231.jpg"></div><div class="product-info"><h4 class="product-name">ليجو اديشينز ليونيل ميسي</h4><p class="product-desc">النسخة الرقمية مع ذراع تحكم</p><span class="product-price">139 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/1dfd339a4b83041c4716e8c0bd08b791486b49c2_684826.jpg"></div><div class="product-info"><h4 class="product-name">سامسونج 27 بوصه تلفزيون زكي</h4><p class="product-desc">نسخة مترجمة باللغة العربية</p><span class="product-price">3999 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/a32982a475b328af8de7aaf52e9e8c0047eae147_684239.jpg"></div><div class="product-info"><h4 class="product-name">هونر ماجيك في 6</h4><p class="product-desc">شحن سريع بقدرة 22.5 واط</p><span class="product-price">7499 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/c40cfd989dd6da4333f4b5d6d8da5f383cb97e74_685364.jpg"></div><div class="product-info"><h4 class="product-name">سونيك فرونتيرز الا صدار النهائي</h4><p class="product-desc">شاشة 10 بوصة، ذاكرة 64 جيجا</p><span class="product-price">239 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/d4e80a95d824bccf91874ac6b957c88289838eae_679389.jpg"></div><div class="product-info"><h4 class="product-name">موتورولا ايدج 70 فيوجن</h4><p class="product-desc">حساسية عالية مع إضاءة RGB</p><span class="product-price">1499 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                    </div>
+                    <button class="prod-next">&#10095;</button>
+                </div>
+            </div>
+
+            <div class="row-container">
+                <h2 class="row-title">الأكثر مبيعاً</h2>
+                <div class="slider-wrapper">
+                    <button class="prod-prev">&#10094;</button>
+                    <div class="products-row">
+                        <div class="product-card">
+                            <div class="product-img"><img src="./images/20.jpg" alt="منتج"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">الكتاب المفقود</h4>
+                                <p class="product-desc">سعة 256 جيجابايت، تيتانيوم طبيعي، 5G</p>
+                                <span class="product-price">59 ر.س</span>
+                                <div class="product-actions">
+                                    <i class="fa-regular fa-heart"></i>
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img"><img src="./images/21.jpg" alt="منتج"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">آزر ابن ذئبه الوادي</h4>
+                                <p class="product-desc">الجيل الثاني مع علبة شحن لاسلكي</p>
+                                <span class="product-price">99 ر.س</span>
+                                <div class="product-actions">
+                                    <i class="fa-regular fa-heart"></i>
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card"><div class="product-img"><img src="./images/22.jpg"></div><div class="product-info"><h4 class="product-name">بلومزيري</h4><p class="product-desc">كور آي 7، رام 16 جيجا</p><span class="product-price">39 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/23.jpg"></div><div class="product-info"><h4 class="product-name">كارفال</h4><p class="product-desc">ذكية بدقة 4K فائقة الوضوح</p><span class="product-price">19 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/24.jpg"></div><div class="product-info"><h4 class="product-name">ويمبي كيد</h4><p class="product-desc">هيكل ألومنيوم مقاس 45 مم</p><span class="product-price">45 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/25.jpg"></div><div class="product-info"><h4 class="product-name">هولي جاكسون</h4><p class="product-desc">النسخة الرقمية مع ذراع تحكم</p><span class="product-price">29 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/26.jpg"></div><div class="product-info"><h4 class="product-name">كتاب قوة العادات</h4><p class="product-desc">نسخة مترجمة باللغة العربية</p><span class="product-price">45 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/27.jpg"></div><div class="product-info"><h4 class="product-name">ذا مان جلو</h4><p class="product-desc">شحن سريع بقدرة 22.5 واط</p><span class="product-price">49 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/28.jpg"></div><div class="product-info"><h4 class="product-name">الف شمس ساطعه</h4><p class="product-desc">شاشة 10 بوصة، ذاكرة 64 جيجا</p><span class="product-price">69 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/29.jpg"></div><div class="product-info"><h4 class="product-name">النهر المتجمد</h4><p class="product-desc">حساسية عالية مع إضاءة RGB</p><span class="product-price">29 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                    </div>
+                    <button class="prod-next">&#10095;</button>
+                </div>
+            </div>
+
+            <div class="row-container">
+                <h2 class="row-title">الرائج الان</h2>
+                <div class="slider-wrapper">
+                    <button class="prod-prev">&#10094;</button>
+                    <div class="products-row">
+                        <div class="product-card">
+                            <div class="product-img"><img src="./images/30.jpg" alt="منتج"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">توراس Ostand Q3 Spin</h4>
+                                <p class="product-desc">سعة 256 جيجابايت، تيتانيوم طبيعي، 5G</p>
+                                <span class="product-price">149 ر.س</span>
+                                <div class="product-actions">
+                                    <i class="fa-regular fa-heart"></i>
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img"><img src="./images/31.jpg" alt="منتج"></div>
+                            <div class="product-info">
+                                <h4 class="product-name">تيكبيك ترايبود ملحقات كاميرا</h4>
+                                <p class="product-desc">الجيل الثاني مع علبة شحن لاسلكي</p>
+                                <span class="product-price">159 ر.س</span>
+                                <div class="product-actions">
+                                    <i class="fa-regular fa-heart"></i>
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card"><div class="product-img"><img src="./images/32.jpg"></div><div class="product-info"><h4 class="product-name">بانيني حزمه كبيره 2026</h4><p class="product-desc">كور آي 7، رام 16 جيجا</p><span class="product-price">79 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/33.jpg"></div><div class="product-info"><h4 class="product-name">‎The FIFA World Cup Pop‎-‎Up Book‎</h4><p class="product-desc">ذكية بدقة 4K فائقة الوضوح</p><span class="product-price">269 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/34.png"></div><div class="product-info"><h4 class="product-name">30لاعب كرة قدم صنعوا التاريخ</h4><p class="product-desc">هيكل ألومنيوم مقاس 45 مم</p><span class="product-price">59 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/35.jpg"></div><div class="product-info"><h4 class="product-name">اريد أن أ كون لاعبكره قدم</h4><p class="product-desc">النسخة الرقمية مع ذراع تحكم</p><span class="product-price">49 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/36.jpg"></div><div class="product-info"><h4 class="product-name">FIFA World Cup 2026</h4><p class="product-desc">نسخة مترجمة باللغة العربية</p><span class="product-price">99 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/37.jpg"></div><div class="product-info"><h4 class="product-name">اديداس كأس العالم</h4><p class="product-desc">شحن سريع بقدرة 22.5 واط</p><span class="product-price">149 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/38.jpg"></div><div class="product-info"><h4 class="product-name">يوفي ايدج سكيوريتي</h4><p class="product-desc">شاشة 10 بوصة، ذاكرة 64 جيجا</p><span class="product-price">69 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                        <div class="product-card"><div class="product-img"><img src="./images/39.jpg"></div><div class="product-info"><h4 class="product-name">سوني اس 100 اف</h4><p class="product-desc">حساسية عالية مع إضاءة RGB</p><span class="product-price">349 ر.س</span><div class="product-actions"><i class="fa-regular fa-heart"></i><i class="fa-solid fa-cart-shopping"></i></div></div></div>
+                    </div>
+                    <button class="prod-next">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ---------------------------------------------------- -->
+
+        <a href="/"  class="GoTOHome">
+            <i class="fa-solid fa-circle-up" style="color: rgb(255, 0, 0); "></i>
+        </a>
+
+        
+
+        <script src="./js/Sctipt.js"></script>
+    </body>
+</html>

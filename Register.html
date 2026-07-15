@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logoPage.png" type="image/png">
+    <title>إنشاء حساب جديد - مكتبة جرير</title>
+    <link rel="stylesheet" href="./stylesheet/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        /* ===================== Facebook-style Register ===================== */
+        .fb-reg-page {
+            background-color: #f0f2f5;
+            background-image: radial-gradient(circle at center, rgba(227, 31, 31, 0.05), transparent 60%);
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 20px;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Faint centered logo watermark, sits behind the card */
+        .fb-reg-page::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url('./images/jarir-logo-bg.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: min(520px, 65vw);
+            opacity: 0.16;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .fb-reg-card {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.08);
+            padding: 20px 26px 26px;
+            width: 432px;
+            max-width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+
+        .fb-reg-card h2 {
+            text-align: center;
+            font-size: 28px;
+            margin: 6px 0 4px;
+            color: #1c1e21;
+        }
+
+        .fb-reg-sub {
+            text-align: center;
+            color: #606770;
+            font-size: 15px;
+            margin: 0 0 16px;
+        }
+
+        .fb-reg-divider {
+            border: none;
+            border-top: 1px solid #dadde1;
+            margin: 0 0 18px;
+        }
+
+        .fb-reg-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .fb-reg-card input[type="text"],
+        .fb-reg-card input[type="email"],
+        .fb-reg-card input[type="password"],
+        .fb-reg-card select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ccd0d5;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+            box-sizing: border-box;
+            font-family: inherit;
+            background: #fff;
+            color: #1c1e21;
+        }
+
+        .fb-reg-card input:focus,
+        .fb-reg-card select:focus {
+            border-color: #e31f1f;
+            box-shadow: 0 0 0 3px rgba(227, 31, 31, 0.15);
+        }
+
+        /* Decorative disabled fields look slightly muted, like inactive controls */
+        .fb-reg-card input:disabled,
+        .fb-reg-card select:disabled {
+            background: #f5f6f7;
+            color: #90949c;
+            cursor: not-allowed;
+        }
+
+        .fb-reg-group {
+            margin-bottom: 12px;
+        }
+
+        .fb-field-label {
+            font-size: 12px;
+            color: #606770;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .fb-gender-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .fb-gender-option {
+            flex: 1;
+            border: 1px solid #ccd0d5;
+            border-radius: 6px;
+            padding: 9px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #90949c;
+            cursor: not-allowed;
+        }
+
+        .fb-terms {
+            font-size: 11px;
+            color: #8d949e;
+            line-height: 1.5;
+            margin: 6px 0 16px;
+        }
+
+        .fb-terms a {
+            color: #385898;
+            text-decoration: none;
+        }
+
+        .fb-terms a:hover {
+            text-decoration: underline;
+        }
+
+        .fb-signup-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #42b72a;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 19px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .fb-signup-btn:hover {
+            background-color: #36a420;
+        }
+
+        .fb-login-link-row {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 14px;
+            color: #1c1e21;
+        }
+
+        .fb-login-link-row a {
+            color: #e31f1f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .fb-login-link-row a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="simple-header">
+        <div class="simple-header-container">
+            <a href="index.html" class="logo-section">
+                <img src="./images/logoNavbar.png" alt="جرير" width="135" height="45">
+            </a>
+
+            <nav class="jarir-nav-auth">
+                <ul id="links" class="auth-links">
+                    <li><a href="login.html" class="auth-btn">تسجيل الدخول</a></li>
+                    <li><a href="register.html" class="auth-btn signup">إنشاء حساب</a></li>
+                </ul>
+
+                <ul id="user_info" class="user-info-list" style="display: none;">
+                    <li><span class="welcome-msg">مرحباً، <strong id="user"></strong></span></li>
+
+                    <li class="nav-icon-item">
+                        <a href="favorites.html" class="nav-icon-link">
+                            <i class="far fa-heart"></i>
+                            <span class="badge" id="fav-badge">0</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-icon-item shopping_cart">
+                        <a href="cartproducts.html" class="nav-icon-link" id="cartIconLink">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge" id="cart-badge">0</span>
+                        </a>
+                        <div class="mini-cart-dropdown" id="miniCartDropdown">
+                            <div class="mini-cart-items" id="miniCartItems"></div>
+                            <a href="cartproducts.html" class="mini-cart-viewall">مشاهدة كل العناصر</a>
+                        </div>
+                    </li>
+
+                    <li><a href="#" id="logout" class="logout-btn">خروج</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="fb-reg-page">
+        <div class="fb-reg-card">
+            <h2>إنشاء حساب جديد</h2>
+            <p class="fb-reg-sub">سريع وسهل.</p>
+            <hr class="fb-reg-divider">
+
+            <form id="register-form-submit">
+                <!-- Decorative only: not wired to any logic, purely for the Facebook-style look -->
+                <div class="fb-reg-row">
+                    <input type="text" placeholder="الاسم الأول" disabled>
+                    <input type="text" placeholder="اسم العائلة" disabled>
+                </div>
+
+                <div class="fb-reg-group">
+                    <input type="text" placeholder="اسم المستخدم" id="username" required>
+                </div>
+
+                <div class="fb-reg-group">
+                    <input type="email" placeholder="البريد الإلكتروني" id="email" required>
+                </div>
+
+                <div class="fb-reg-group">
+                    <input type="password" placeholder="كلمة المرور الجديدة" id="password" required>
+                </div>
+
+                <!-- Decorative only: not wired to any logic, purely for the Facebook-style look -->
+                <div class="fb-reg-group">
+                    <span class="fb-field-label">تاريخ الميلاد</span>
+                    <div class="fb-reg-row">
+                        <select disabled><option>يوم</option></select>
+                        <select disabled><option>شهر</option></select>
+                        <select disabled><option>سنة</option></select>
+                    </div>
+                </div>
+
+                <div class="fb-reg-group">
+                    <span class="fb-field-label">الجنس</span>
+                    <div class="fb-gender-row">
+                        <label class="fb-gender-option">ذكر <input type="radio" name="gender" disabled></label>
+                        <label class="fb-gender-option">أنثى <input type="radio" name="gender" disabled></label>
+                    </div>
+                </div>
+
+                <!-- Decorative only, links go nowhere -->
+                <p class="fb-terms">
+                    بالنقر على "إنشاء حساب"، فإنك توافق على <a href="#">الشروط</a>
+                    و<a href="#">سياسة الخصوصية</a> و<a href="#">سياسة ملفات تعريف الارتباط</a> الخاصة بمكتبة جرير.
+                </p>
+
+                <input type="submit" value="إنشاء حساب" class="fb-signup-btn" id="sign_up">
+            </form>
+
+            <div class="fb-login-link-row">
+                لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/Register.js"></script>
+    <script src="./js/Sctipt.js"></script>
+</body>
+</html>

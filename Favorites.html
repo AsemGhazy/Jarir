@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logoPage.png" type="image/png">
+    <title>المفضلة - مكتبة جرير</title>
+    <link rel="stylesheet" href="./stylesheet/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .fav-page { padding: 40px 5vw; background-color: #e8e8e8b9; min-height: 80vh; }
+        .fav-grid { display: flex; flex-wrap: wrap; gap: 20px; }
+        /* استخدام نفس مظهر كروت جرير الاصلية */
+        .product-card { background: #fff; border: 1px solid #eee; border-radius: 8px; width: 220px; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+        .product-img img { width: 100%; height: 180px; object-fit: contain; }
+        .product-name { font-size: 16px; margin: 10px 0 5px; color: #333; font-weight: bold; }
+        .product-desc { font-size: 13px; color: #666; margin-bottom: 10px; height: 36px; overflow: hidden; }
+        .product-price { font-weight: bold; color: #e31f1f; margin-bottom: 15px; display: block; }
+        .product-actions { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 10px; color: #666; font-size: 18px; }
+        .product-actions i { cursor: pointer; }
+        .product-actions i:hover { color: #e31f1f; }
+    </style>
+</head>
+<body>
+    <header class="simple-header">
+        <div class="simple-header-container">
+            <a href="index.html" class="logo-section">
+                <img src="./images/logoNavbar.png" alt="جرير" width="135" height="45">
+            </a>
+
+            <nav class="jarir-nav-auth">
+                <ul id="links" class="auth-links">
+                    <li><a href="login.html" class="auth-btn">تسجيل الدخول</a></li>
+                    <li><a href="register.html" class="auth-btn signup">إنشاء حساب</a></li>
+                </ul>
+
+                <ul id="user_info" class="user-info-list" style="display: none;">
+                    <li><span class="welcome-msg">مرحباً، <strong id="user"></strong></span></li>
+
+                    <li class="nav-icon-item">
+                        <a href="favorites.html" class="nav-icon-link">
+                            <i class="far fa-heart"></i>
+                            <span class="badge" id="fav-badge">0</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-icon-item shopping_cart">
+                        <a href="cartproducts.html" class="nav-icon-link" id="cartIconLink">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge" id="cart-badge">0</span>
+                        </a>
+                        <div class="mini-cart-dropdown" id="miniCartDropdown">
+                            <div class="mini-cart-items" id="miniCartItems"></div>
+                            <a href="cartproducts.html" class="mini-cart-viewall">مشاهدة كل العناصر</a>
+                        </div>
+                    </li>
+
+                    <li><a href="#" id="logout" class="logout-btn">خروج</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="fav-page">
+        <h1>منتجاتي المفضلة ❤️</h1>
+        <br>
+        <div class="fav-grid" id="fav-grid-wrapper"></div>
+    </main>
+
+    <script src="./JS/sctipt.js"></script>
+    <script>
+        // Uses the shared getFavorites/saveFavorites/addOrIncrementCart/updateBadges
+        // helpers defined in sctipt.js.
+        let wrapper = document.getElementById("fav-grid-wrapper");
+
+        function drawFavorites() {
+            let favItems = getFavorites();
+
+            if (favItems.length === 0) {
+                wrapper.innerHTML = "<p style='padding: 20px;'>لا توجد منتجات في المفضلة حالياً.</p>";
+                return;
+            }
+
+            wrapper.innerHTML = favItems.map((item) => `
+                <div class="product-card">
+                    <div class="product-img"><img src="${item.img}" alt="${item.name}"></div>
+                    <div class="product-info">
+                        <h4 class="product-name">${item.name}</h4>
+                        <p class="product-desc">${item.desc}</p>
+                        <span class="product-price">${item.price}</span>
+                        <div class="product-actions">
+                            <i class="fas fa-trash-alt remove-fav-btn" data-name="${item.name}" style="color: #999;" title="إزالة"></i>
+                            <i class="fa-solid fa-cart-shopping move-to-cart-btn" data-name="${item.name}" style="color: #666;" title="أضف للسلة"></i>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        wrapper.addEventListener("click", function (e) {
+            const removeBtn = e.target.closest(".remove-fav-btn");
+            const moveBtn = e.target.closest(".move-to-cart-btn");
+
+            if (removeBtn) {
+                let favItems = getFavorites();
+                favItems = favItems.filter((item) => item.name !== removeBtn.dataset.name);
+                saveFavorites(favItems);
+                updateBadges();
+                drawFavorites();
+            }
+
+            if (moveBtn) {
+                let favItems = getFavorites();
+                let item = favItems.find((f) => f.name === moveBtn.dataset.name);
+                if (!item) return;
+
+                addOrIncrementCart({ img: item.img, name: item.name, desc: item.desc, price: item.price });
+                updateBadges();
+                alert("تم نقل المنتج إلى عربة التسوق بنجاح!");
+            }
+        });
+
+        drawFavorites();
+    </script>
+</body>
+</html>
